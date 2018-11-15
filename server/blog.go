@@ -126,6 +126,11 @@ func postHandler(w http.ResponseWriter, r *http.Request, params map[string]strin
 	// Render post template
 	err := templates.ShowPostTemplate(w, r, slug)
 	if err != nil {
+		if err == templates.ErrNotFound || err == templates.ErrNotPublished {
+			http.NotFound(w, r)
+			return
+		}
+
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}

@@ -2,22 +2,29 @@ package templates
 
 import (
 	"bytes"
+	"database/sql"
 	"errors"
+	"net/http"
+	"path/filepath"
+	"sync"
+
 	"github.com/kabukky/journey/database"
 	"github.com/kabukky/journey/filenames"
 	"github.com/kabukky/journey/helpers"
 	"github.com/kabukky/journey/plugins"
 	"github.com/kabukky/journey/structure"
 	"github.com/kabukky/journey/structure/methods"
-	"net/http"
-	"path/filepath"
-	"sync"
 )
 
 type Templates struct {
 	sync.RWMutex
 	m map[string]*structure.Helper
 }
+
+var (
+	ErrNotPublished = errors.New("the post is not published")
+	ErrNotFound     = errors.New("no such post")
+)
 
 func newTemplates() *Templates { return &Templates{m: make(map[string]*structure.Helper)} }
 
@@ -32,9 +39,13 @@ func ShowPostTemplate(writer http.ResponseWriter, r *http.Request, slug string) 
 	defer methods.Blog.RUnlock()
 	post, err := database.RetrievePostBySlug(slug)
 	if err != nil {
+		if err == sql.ErrNoRows {
+			return ErrNotFound
+		}
+
 		return err
 	} else if !post.IsPublished { // Make sure the post is published before rendering it
-		return errors.New("Post not published.")
+		return ErrNotPublished
 	}
 	requestData := structure.RequestData{Posts: make([]structure.Post, 1), Blog: methods.Blog, CurrentTemplate: 1, CurrentPath: r.URL.Path} // CurrentTemplate = post
 	requestData.Posts[0] = *post
