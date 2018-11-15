@@ -3,10 +3,10 @@ package templates
 import (
 	"bytes"
 	"github.com/kabukky/feeds"
-	"github.com/kabukky/journey/database"
-	"github.com/kabukky/journey/date"
-	"github.com/kabukky/journey/structure"
-	"github.com/kabukky/journey/structure/methods"
+	"github.com/reconquest/journey/database"
+	"github.com/reconquest/journey/date"
+	"github.com/reconquest/journey/structure"
+	"github.com/reconquest/journey/structure/methods"
 	"net/http"
 )
 

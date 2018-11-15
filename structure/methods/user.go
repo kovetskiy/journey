@@ -1,9 +1,9 @@
 package methods
 
 import (
-	"github.com/kabukky/journey/database"
-	"github.com/kabukky/journey/date"
-	"github.com/kabukky/journey/structure"
+	"github.com/reconquest/journey/database"
+	"github.com/reconquest/journey/date"
+	"github.com/reconquest/journey/structure"
 )
 
 func SaveUser(u *structure.User, hashedPassword string, createdBy int64) error {

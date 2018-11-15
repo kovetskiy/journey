@@ -8,12 +8,12 @@ import (
 	"path/filepath"
 	"sync"
 
-	"github.com/kabukky/journey/database"
-	"github.com/kabukky/journey/filenames"
-	"github.com/kabukky/journey/helpers"
-	"github.com/kabukky/journey/plugins"
-	"github.com/kabukky/journey/structure"
-	"github.com/kabukky/journey/structure/methods"
+	"github.com/reconquest/journey/database"
+	"github.com/reconquest/journey/filenames"
+	"github.com/reconquest/journey/helpers"
+	"github.com/reconquest/journey/plugins"
+	"github.com/reconquest/journey/structure"
+	"github.com/reconquest/journey/structure/methods"
 )
 
 type Templates struct {

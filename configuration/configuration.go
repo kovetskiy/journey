@@ -8,7 +8,7 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/kabukky/journey/filenames"
+	"github.com/reconquest/journey/filenames"
 )
 
 // Configuration: settings that are neccesary for server configuration

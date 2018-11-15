@@ -2,11 +2,11 @@ package methods
 
 import (
 	"encoding/json"
-	"github.com/kabukky/journey/configuration"
-	"github.com/kabukky/journey/database"
-	"github.com/kabukky/journey/date"
-	"github.com/kabukky/journey/slug"
-	"github.com/kabukky/journey/structure"
+	"github.com/reconquest/journey/configuration"
+	"github.com/reconquest/journey/database"
+	"github.com/reconquest/journey/date"
+	"github.com/reconquest/journey/slug"
+	"github.com/reconquest/journey/structure"
 	"log"
 )
 
